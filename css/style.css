@@ -1,0 +1,61 @@
+.grid {
+  display: grid;
+}
+
+body {
+  width: 90vw;
+  margin: 0 auto;
+  /* width: 100vw; */
+  height: 100vh;
+}
+body.grid {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 100px 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    '. headr'
+    'video-list main-video'
+    'video-list main-video'
+    'video-list main-video'
+    'video-list wiki';
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: headr;
+  width: 100%;
+  /* background: lightsalmon; */
+}
+header input[type='search'] {
+  width: 99%;
+  font-size: 1.5em;
+  padding-inline-start: 1em;
+  border-radius: 0.2em;
+  border: none;
+  box-shadow: 0 0 2px 0px #aaa;
+}
+header .logo {
+  margin-inline-start: 2em;
+}
+
+.main-video {
+  grid-area: main-video;
+  background: lightblue;
+  width: 100%;
+  height: 100%;
+}
+
+.video-list {
+  grid-area: video-list;
+  background: lightgoldenrodyellow;
+}
+
+.wiki {
+  grid-area: wiki;
+  background: lightcoral;
+}
