@@ -13,7 +13,7 @@ header input[type="search"] {
     border-radius: 100vh;
     border: none;
     box-shadow: 0 0 2px 0px #aaa;
-    height: 35%;
+    height: 60%;
 }
 header .logo {
     margin-inline-start: 2em;

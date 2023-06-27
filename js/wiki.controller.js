@@ -1,5 +1,5 @@
 function initWiki() {
-  getYTdata().then(renderVideoList)
+  getYTdata().then(renderVideoList).catch(console.log)
   getWIKIdata().then(renderWikiList).catch(console.log)
 }
 
@@ -9,7 +9,7 @@ function renderVideoList(videos) {
     return `
      <article class="vid-preview grid" onclick="onSelectVideo('${id}')">
      <p>${title}</p>
-      <img  src="${cover}" alt="">
+      <img src="${cover}" alt="">
      </article>
     `
   }).join('')
@@ -23,7 +23,7 @@ function renderWikiList(wikiData) {
   console.log('render wiki data', wikiData);
   const strHtmls = wikiData.map((wiki) => {
     return `
-    <li class="wiki-preview" onclick="onSelectWiki(${wiki.id})">
+    <li class="wiki-preview" onclick="onSelectWiki( ${wiki.id})">
     <h5>${wiki.title}</h5>
     <small>${wiki.desc}</small>
     </li>
@@ -35,13 +35,13 @@ function renderWikiList(wikiData) {
 }
 
 function onSelectWiki(wikiId) {
-  console.log('wikiId:', wikiId)
+  window.open(`https://en.wikipedia.org/?curid=${wikiId}`)
 }
 
 function onSearch(value) {
   console.log('value:', value)
   setSearchTerm(value)
-  getYTdata().then(renderVideoList)
+  getYTdata().then(renderVideoList).catch(console.log)
   getWIKIdata().then(renderWikiList).catch(console.log)
 }
 
