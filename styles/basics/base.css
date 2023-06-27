@@ -8,7 +8,7 @@ html {
 }
 
 body {
-    font-family: Roboto400;
+    font-family: Roboto400 Arial, Helvetica, sans-serif;
     width: 90vw;
     margin: 0 auto;
     /* width: 100vw; */
