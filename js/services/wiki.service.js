@@ -1,31 +1,42 @@
-const TY_KEY = 'TYdata'
-const WIKI_KEY = 'WIKIdata'
+'use strict'
 const YT_API_KEY = 'AIzaSyCQ3VQLxhDknZgctC7gsaB2tpWsMuYSN8A'
-
-var gTYdata = loadFromStorage(TY_KEY) || {}
-var gWIKIdata = loadFromStorage(WIKI_KEY) || {}
 var gSearchTerm = 'vue'
+var gCache = loadFromStorage('cache') || {}
 
-function getYTdata() {
-  if (gTYdata[gSearchTerm]) {
-    console.log('getting from storage')
-    return Promise.resolve(gTYdata[gSearchTerm])
+
+
+function getAllData() {
+  if (gCache[gSearchTerm]) {
+    console.log('from cache')
+    return Promise.resolve(gCache[gSearchTerm])
   }
-  return axios
-    .get(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key=${YT_API_KEY}&q=${gSearchTerm}`
-    )
-    .then((res) => {
-      videos = prepData(res.data)
-      console.log('videos:', videos)
-      gTYdata[gSearchTerm] = videos
-      saveToStorage(TY_KEY, gTYdata)
-      return videos
-    })
+
+  const YT_URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key=${YT_API_KEY}&q=${gSearchTerm}`
+  const WIKI_URL = `https://en.wikipedia.org/w/api.php?&origin=*&action=query&list=search&srsearch=${gSearchTerm}&format=json`
+  // same as: axios.all([axios.get(YT_URL), axios.get(WIKI_URL)])
+  return Promise.all([axios.get(YT_URL), axios.get(WIKI_URL)]).then((res) => {
+    const [res1, res2] = res
+    const videos = prepData(res1.data)
+    const wikiData = prepWikiData(res2.data)
+    gCache[gSearchTerm] = { videos, wikiData }
+    return { videos, wikiData }
+  }).catch((err) => {
+    throw err
+  })
+
 }
 
+function prepWikiData({ query: { search: items } }) {
+  return items.map((item) => {
+    return {
+      id: item.pageid,
+      title: item.title,
+      desc: item.snippet,
+
+    }
+  })
+}
 function prepData({ items }) {
-  console.log('items:', items)
   return items.map((item) => {
     return {
       id: item.id.videoId,
@@ -37,41 +48,11 @@ function prepData({ items }) {
   })
 }
 
-
-function getWIKIdata() {
-  if (gWIKIdata[gSearchTerm]) {
-    console.log('getting from storage')
-    return Promise.resolve(gWIKIdata[gSearchTerm])
-  }
-  return axios
-    .get(
-      `https://en.wikipedia.org/w/api.php?&origin=*&action=query&list=search&srsearch=${gSearchTerm}&format=json`
-    )
-    .then((res) => {
-      const wikiData = prepWikiData(res.data)
-      gWIKIdata[gSearchTerm] = wikiData
-      saveToStorage(WIKI_KEY, gWIKIdata)
-      return wikiData
-    })
-}
-
-function prepWikiData({ query: { search: items } }) {
-  console.log('wiki res:', items)
-  return items.map((item) => {
-    return {
-      id: item.pageid,
-      title: item.title,
-      desc: item.snippet,
-
-    }
-  })
-}
-
 function setSearchTerm(value) {
   gSearchTerm = value
 }
 function getVidById(divId) {
-  return gTYdata[gSearchTerm].find((video) => video.id === divId)
+  return gCache[gSearchTerm].videos.find((video) => video.id === divId)
 }
 function saveToStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value))

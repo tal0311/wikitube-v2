@@ -1,6 +1,8 @@
 function initWiki() {
-  getYTdata().then(renderVideoList).catch(console.log)
-  getWIKIdata().then(renderWikiList).catch(console.log)
+  getAllData().then(({ videos, wikiData }) => {
+    renderVideoList(videos)
+    renderWikiList(wikiData)
+  }).catch(console.log)
 }
 
 function renderVideoList(videos) {
@@ -39,10 +41,12 @@ function onSelectWiki(wikiId) {
 }
 
 function onSearch(value) {
-  console.log('value:', value)
+  if (!value) return
   setSearchTerm(value)
-  getYTdata().then(renderVideoList).catch(console.log)
-  getWIKIdata().then(renderWikiList).catch(console.log)
+  getAllData().then(({ videos, wikiData }) => {
+    renderVideoList(videos)
+    renderWikiList(wikiData)
+  })
 }
 
 function onSelectVideo(videoId) {
