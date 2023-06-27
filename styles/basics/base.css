@@ -1,0 +1,51 @@
+/* general */
+* {
+    box-sizing: border-box;
+}
+
+/* tags */
+html {
+}
+
+body {
+    width: 90vw;
+    margin: 0 auto;
+    /* width: 100vw; */
+    height: 100vh;
+}
+
+body.grid {
+    display: grid;
+    height: 100vh;
+    height: 100dvh;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 100px 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        ". header"
+        "video-list main-video"
+        "video-list main-video"
+        "video-list main-video"
+        "video-list wiki";
+}
+
+img {
+    width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,6 @@
+.video-list {
+    grid-area: video-list;
+    background: lightgoldenrodyellow;
+    /* overflow: auto; */
+    /* max-height: 90vh; */
+}

@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Document</title>
-  </head>
-  <header>
-    <input type="search" placeholder="Enter your search" />
-    <div class="logo"></div>
-  </header>
-  <body class="grid" onload="initWiki()">
-    <iframe class="main-video" src="" frameborder="0"></iframe>
-    <div class="video-list"></div>
-    <section class="wiki">
-      <p>wiki Info</p>
-    </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/styles/styles.css" />
+  <title>Document</title>
+</head>
+<header>
+  <input type="search" placeholder="Enter your search" />
+  <div class="logo"></div>
+</header>
+<body class="grid" onload="initWiki()">
+  <section class="main-video grid">
+    <iframe class="" src="" frameborder="0"></iframe>
+    <div class="info-container">
+      <p class="video-desc"></p>
+    </div>
+  </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="js/services/wiki.service.js"></script>
-    <script src="js/services/svg.service.js"></script>
-    <script src="js/wiki.controller.js"></script>
-  </body>
+  <section class="video-list"></section>
+
+  <section class="wiki">
+    <p>wiki Info</p>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/services/wiki.service.js"></script>
+  <script src="js/services/svg.service.js"></script>
+  <script src="js/wiki.controller.js"></script>
+</body>
 </html>

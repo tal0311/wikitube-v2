@@ -27,7 +27,10 @@ function prepData({ items }) {
     return {
       id: item.id.videoId,
       title: item.snippet.title,
-      cover: item.snippet.thumbnails.default.url,
+      cover: item.snippet.thumbnails.high.url,
+      desc: item.snippet.description,
+      publishedAt: item.snippet.publishedAt,
+
     }
   })
 }
@@ -35,7 +38,9 @@ function prepData({ items }) {
 function setSearchTerm(value) {
   gSearchTerm = value
 }
-
+function getVidById(divId) {
+  return gData[gSearchTerm].find((video) => video.id === divId)
+}
 function saveToStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value))
 }

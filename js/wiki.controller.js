@@ -14,15 +14,19 @@ function renderVideoList(videos) {
   })
 
   document.querySelector('.logo').innerHTML = getSvg('logo')
-  document.querySelector(
-    '.main-video'
-  ).src = `https://www.youtube.com/embed/${videos[0].id}?`
-
+  onSelectVideo(videos[0].id)
   document.querySelector('.video-list').innerHTML = strHtmls
-  // setTimeout(onSearch, 1000)
 }
 
 function onSearch(value = 'react') {
   setSearchTerm(value)
   getData().then(renderVideoList)
+}
+
+function onSelectVideo(videoId) {
+  const video = getVidById(videoId)
+  const elMainVideo = document.querySelector('.main-video')
+  elMainVideo.querySelector('iframe').src = `https://www.youtube.com/embed/${video.id}?`
+  const elInfoContainer = elMainVideo.querySelector('.info-container')
+  elInfoContainer.querySelector('.video-desc').innerText = video.desc
 }
