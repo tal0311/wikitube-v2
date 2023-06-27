@@ -1,26 +1,48 @@
 function initWiki() {
-  getData().then(renderVideoList)
+  getYTdata().then(renderVideoList)
+  getWIKIdata().then(renderWikiList).catch(console.log)
 }
 
 function renderVideoList(videos) {
   const strHtmls = videos.map((video) => {
     const { id, title, cover } = video
     return `
-     <article onclick="onSelectVideo('${id}')">
+     <article class="vid-preview grid" onclick="onSelectVideo('${id}')">
+     <p>${title}</p>
       <img  src="${cover}" alt="">
-      <h4>${title}</h4>
      </article>
     `
-  })
+  }).join('')
 
   document.querySelector('.logo').innerHTML = getSvg('logo')
   onSelectVideo(videos[0].id)
   document.querySelector('.video-list').innerHTML = strHtmls
 }
 
-function onSearch(value = 'react') {
+function renderWikiList(wikiData) {
+  console.log('render wiki data', wikiData);
+  const strHtmls = wikiData.map((wiki) => {
+    return `
+    <li class="wiki-preview" onclick="onSelectWiki(${wiki.id})">
+    <h5>${wiki.title}</h5>
+    <small>${wiki.desc}</small>
+    </li>
+    `
+  }).join('')
+
+  document.querySelector('.wiki-list').innerHTML = strHtmls
+
+}
+
+function onSelectWiki(wikiId) {
+  console.log('wikiId:', wikiId)
+}
+
+function onSearch(value) {
+  console.log('value:', value)
   setSearchTerm(value)
-  getData().then(renderVideoList)
+  getYTdata().then(renderVideoList)
+  getWIKIdata().then(renderWikiList).catch(console.log)
 }
 
 function onSelectVideo(videoId) {

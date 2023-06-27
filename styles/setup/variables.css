@@ -1,7 +1,14 @@
 :root {
     /* pallete */
-    --Clr1:#fff
-    
+    --Clr1: #fff;
+    --ClrHover: #e5e5e5;
+    --ClrScroll: #606060;
+    --BR: 0.6rem;
+
+    /*scroll bar   */
+    --sb-track-color: #232e33;
+    --sb-thumb-color: #6d6d6d;
+    --sb-size: 10px;
 
     /* layout */
     --layout-padding-hor: 80px;

@@ -1,11 +1,16 @@
 .main-video {
     grid-area: main-video;
     grid-template-rows: auto min-content;
-    background: lightblue;
+    /* background: lightblue; */
     width: 100%;
     height: 100%;
+    gap: 10px;
 }
 iframe {
     height: 100%;
     width: 100%;
+}
+
+.main-video .video-desc {
+    font-family: Roboto500;
 }

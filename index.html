@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/styles/styles.css" />
-  <title>Document</title>
+  <title>Wiki-Tube</title>
 </head>
 <header>
-  <input type="search" placeholder="Enter your search" />
+  <input type="search" onsearch="onSearch(this.value)" placeholder="Enter your search" />
   <div class="logo"></div>
 </header>
 <body class="grid" onload="initWiki()">
@@ -19,10 +19,11 @@
     </div>
   </section>
 
-  <section class="video-list"></section>
+  <section class="video-list grid"></section>
 
   <section class="wiki">
-    <p>wiki Info</p>
+    <h3>Your search in Wikipedia</h3>
+    <ul class="wiki-list clean-list grid"></ul>
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
