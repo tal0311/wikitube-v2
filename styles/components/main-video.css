@@ -5,10 +5,22 @@
     width: 100%;
     height: 100%;
     gap: 10px;
+    /* position: sticky;
+    top: 10px; */
 }
+
 iframe {
+    transition: all 0.3s ease-out;
     height: 100%;
     width: 100%;
+}
+
+body.scrolled iframe {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: 250px;
+    width: 320px;
 }
 
 .main-video .video-desc {

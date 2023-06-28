@@ -70,3 +70,13 @@ function getViews() {
 function getFormattedDate(ts) {
   return new Date(ts).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 }
+
+function onUserScroll(ev) {
+  const elBody = document.querySelector('body')
+  if (window.scrollY > 250) {
+    elBody.classList.add('scrolled')
+  } else {
+    elBody.classList.remove('scrolled')
+  }
+
+}
