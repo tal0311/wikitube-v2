@@ -11,7 +11,7 @@ function getAllData() {
     return Promise.resolve(gCache[gSearchTerm])
   }
 
-  const YT_URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key=${YT_API_KEY}&q=${gSearchTerm}`
+  const YT_URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key=${YT_API_KEY}&q=${gSearchTerm}&maxResults=10`
   const WIKI_URL = `https://en.wikipedia.org/w/api.php?&origin=*&action=query&list=search&srsearch=${gSearchTerm}&format=json`
   // same as: axios.all([axios.get(YT_URL), axios.get(WIKI_URL)])
   return Promise.all([axios.get(YT_URL), axios.get(WIKI_URL)]).then((res) => {
@@ -19,6 +19,7 @@ function getAllData() {
     const videos = prepData(res1.data)
     const wikiData = prepWikiData(res2.data)
     gCache[gSearchTerm] = { videos, wikiData }
+    saveToStorage('cache', gCache)
     return { videos, wikiData }
   }).catch((err) => {
     throw err
@@ -37,13 +38,16 @@ function prepWikiData({ query: { search: items } }) {
   })
 }
 function prepData({ items }) {
+
   return items.map((item) => {
+
     return {
       id: item.id.videoId,
       title: item.snippet.title,
       cover: item.snippet.thumbnails.high.url,
       desc: item.snippet.description,
       publishedAt: item.snippet.publishedAt,
+      channel: item.snippet.channelTitle,
     }
   })
 }

@@ -10,7 +10,14 @@ function renderVideoList(videos) {
     const { id, title, cover } = video
     return `
      <article class="vid-preview grid" onclick="onSelectVideo('${id}')">
+     <div class="info-container grid">
      <p>${title}</p>
+      <small>${video.channel}</small>
+    <div class="video-info grid">
+      <span> ${getFormattedDate(video.publishedAt)}</span> 
+      <span>Views: ${getViews()}K</span>
+    </div>
+     </div>
       <img src="${cover}" alt="">
      </article>
     `
@@ -54,4 +61,12 @@ function onSelectVideo(videoId) {
   elMainVideo.querySelector('iframe').src = `https://www.youtube.com/embed/${video.id}?`
   const elInfoContainer = elMainVideo.querySelector('.info-container')
   elInfoContainer.querySelector('.video-desc').innerText = video.desc
+}
+
+function getViews() {
+  return Math.floor(Math.random() * 5000)
+}
+
+function getFormattedDate(ts) {
+  return new Date(ts).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 }

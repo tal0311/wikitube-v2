@@ -1,7 +1,8 @@
 .video-list {
     grid-area: video-list;
-    gap: 0.8rem;
-    min-width: 400px;
+    /* grid-template-rows: max-content; */
+    /* gap: 0.8rem; */
+    min-width: 300px;
 }
 
 /* .video-list > * {
