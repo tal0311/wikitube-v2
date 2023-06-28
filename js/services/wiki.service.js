@@ -51,8 +51,8 @@ function prepData({ items }) {
 function setSearchTerm(value) {
   gSearchTerm = value
 }
-function getVidById(divId) {
-  return gCache[gSearchTerm].videos.find((video) => video.id === divId)
+function getVidById(videoId) {
+  return gCache[gSearchTerm].videos.find((video) => video.id === videoId)
 }
 function saveToStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value))

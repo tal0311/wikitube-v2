@@ -22,7 +22,7 @@ function renderVideoList(videos) {
 }
 
 function renderWikiList(wikiData) {
-    const strHtmls = wikiData.map((wiki) => {
+  const strHtmls = wikiData.map((wiki) => {
     return `
     <li class="wiki-preview" onclick="onSelectWiki( ${wiki.id})">
     <h5>${wiki.title}</h5>
