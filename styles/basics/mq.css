@@ -1,58 +1,39 @@
 /* MOBILE ONLY */
-@media (max-width: 900px) {
+@media (width < 900px) {
     html {
         font-size: 18px;
     }
-    .main-nav-container {
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100vh;
-        background-color: rgb(255 255 255 / 90%);
-        border-inline-start: 1px solid #ccc;
-        width: 200px;
-        translate: 100% 0;
 
-        transition: translate 0.6s, box-shadow 0.6s;
-    }
+    body.grid {
+        grid-template-columns: 1fr;
 
-    body.menu-open .main-nav-container {
-        box-shadow: 0 0 20px rgb(0 0 0 / 50%);
-        translate: 0;
-    }
-
-    .main-header .main-nav {
-        flex-direction: column;
-    }
-    .main-nav > li {
-        border-bottom: 1px solid #ccc;
-        display: grid;
-    }
-
-    .main-header .main-nav a {
-        padding: 8px 26px;
-        transition: background-color 0.4s;
-    }
-
-    .main-header .main-nav a:hover {
-        text-decoration: none;
-        background-color: #ececec;
-        color: inherit;
+        gap: 1.2rem 1.2rem;
+        grid-auto-flow: row;
+        grid-template-areas:
+            "header"
+            "main-video"
+            "main-video"
+            "main-video"
+            "wiki"
+            "video-list"
+            "video-list"
+            "video-list"
+            "video-list ";
     }
 }
 
 /* SMALL */
-@media (min-width: 640px) {
+/* @media (min-width: 640px) {
     .main-layout {
         grid-template-columns:
             minmax(20px, 1fr)
             minmax(auto, var(--s))
             minmax(20px, 1fr);
     }
-}
+} */
 
 /* MEDIUM */
-@media (min-width: 900px) {
+/* @media (min-width: 900px) {
     :root {
         --layout-padding-ver: 80px;
     }
@@ -93,10 +74,10 @@
     .btn-toggle-menu {
         display: none;
     }
-}
+} */
 
 /* LARGE  */
-@media (min-width: 1100px) {
+/* @media (min-width: 1100px) {
     .main-layout {
         grid-template-columns:
             minmax(20px, 1fr)
@@ -107,4 +88,4 @@
         --layout-padding-ver: 120px;
         grid-template-columns: var(--layout-padding-hor) 1fr 60px 1fr var(--layout-padding-hor);
     }
-}
+} */

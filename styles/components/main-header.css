@@ -17,4 +17,5 @@ header input[type="search"] {
 }
 header .logo {
     margin-inline-start: 2em;
+    margin-inline-end: -41px;
 }
