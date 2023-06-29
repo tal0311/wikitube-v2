@@ -59,11 +59,6 @@ body::-webkit-scrollbar {
     width: var(--sb-size);
 }
 
-body::-webkit-scrollbar-track {
-    /* background: var(--sb-track-color);
-    border-radius: 10px; */
-}
-
 body::-webkit-scrollbar-thumb {
     background: var(--sb-thumb-color);
     border-radius: 10px;
@@ -72,11 +67,8 @@ p {
     margin: 0;
 }
 
-body.mobile body::-webkit-scrollbar-thumb,
-body::-webkit-scrollbar,
-body::-webkit-scrollbar {
-    width: 0;
-    display: none;
+body.mobile::-webkit-scrollbar-thumb {
+    background: none;
     border: none;
 }
 

@@ -1,13 +1,11 @@
 'use strict'
 
-function initWiki() {
-  getAllData().then(({ videos, wikiData }) => {
-    renderVideoList(videos)
-    renderWikiList(wikiData)
-  }).catch(console.log)
+async function initWiki() {
+  const { videos, wikiData } = await getAllData().catch(console.log)
+  renderVideoList(videos)
+  renderWikiList(wikiData)
   setMobileStatus(isMobile())
   setConsoleData(true, true)
-  // console.log();
 }
 
 function renderVideoList(videos) {
@@ -51,13 +49,12 @@ function onSelectWiki(wikiId) {
   window.open(`https://en.wikipedia.org/?curid=${wikiId}`)
 }
 
-function onSearch(value) {
+async function onSearch(value) {
   if (!value) return
   setSearchTerm(value)
-  getAllData().then(({ videos, wikiData }) => {
-    renderVideoList(videos)
-    renderWikiList(wikiData)
-  })
+  const { videos, wikiData } = await getAllData().catch(console.log)
+  renderVideoList(videos)
+  renderWikiList(wikiData)
 }
 
 function onSelectVideo(videoId) {
