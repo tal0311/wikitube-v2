@@ -6,7 +6,7 @@
 
     body.grid {
         grid-template-columns: 1fr;
-
+        grid-template-rows: 70px 50vh 1fr 1fr 1fr;
         gap: 1.2rem 1.2rem;
         grid-auto-flow: row;
         grid-template-areas:
