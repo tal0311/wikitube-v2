@@ -80,12 +80,13 @@ p {
     content: attr(data-title);
     position: absolute;
     font-size: 12px;
-    background: #f0abab;
-    color: #fff;
+    background: var(--sb-track-color);
+    color: var(--Clr1);
     padding: 0.2em 0.3em;
     border-radius: 0.2em;
     text-transform: capitalize;
-    bottom: -25px;
+    bottom: -20px;
     width: max-content;
     left: 12px;
+    z-index: 1000;
 }

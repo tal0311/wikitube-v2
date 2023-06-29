@@ -9,7 +9,7 @@ function renderVideoList(videos) {
   const strHtmls = videos.map((video) => {
     const { id, title, cover } = video
     return `
-     <article class="vid-preview grid" onclick="onSelectVideo('${id}')">
+     <article class="vid-preview grid" data-title="${title}" onclick="onSelectVideo('${id}')">
      <div class="info-container grid">
      <p>${title}</p>
       <small>${video.channel}</small>
@@ -31,7 +31,7 @@ function renderVideoList(videos) {
 function renderWikiList(wikiData) {
   const strHtmls = wikiData.map((wiki) => {
     return `
-    <li class="wiki-preview" onclick="onSelectWiki( ${wiki.id})">
+    <li class="wiki-preview" data-title="${wiki.title}" onclick="onSelectWiki( ${wiki.id})">
     <h5>${wiki.title}</h5>
     <small>${wiki.desc}</small>
     </li>
