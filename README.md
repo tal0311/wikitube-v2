@@ -28,9 +28,13 @@ You can see a live demo of the YouTube clone [here](https://tal0311.github.io/wi
 
 ## Screenshots
 
-![Screenshot 1](screenshots/screenshot1.png)
+![Screenshot 1](/screenshots/desktop1.jpg)  
 
-![Screenshot 2](screenshots/screenshot2.png)
+![Screenshot 1](/screenshots/desktop2.jpeg)
+
+![Screenshot 2](/screenshots/mobile1.jpeg)  
+
+![Screenshot 2](/screenshots/mobile2.jpeg)
 
 ## Contributing
 
