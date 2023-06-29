@@ -21,6 +21,7 @@ body.scrolled iframe {
     right: 0;
     height: 250px;
     width: 320px;
+    z-index: 1000;
 }
 
 .main-video .video-desc {
