@@ -3,10 +3,7 @@ function initWiki() {
     renderVideoList(videos)
     renderWikiList(wikiData)
   }).catch(console.log)
-
   setMobileStatus(isMobile())
-  // console.log('navigator.userAgentData.mobile:', navigator.userAgentData.mobile)
-
 }
 
 function renderVideoList(videos) {
