@@ -87,6 +87,5 @@ function onUserScroll(ev) {
 
 function setMobileStatus(isMobile) {
   const elBody = document.querySelector('body')
-  console.log('isMobile:', isMobile)
-  isMobile ? elBody.classList.add('mobile') : elBody.classList.add('mobile')
+  isMobile ? elBody.classList.add('mobile') : elBody.classList.add('desktop')
 }
