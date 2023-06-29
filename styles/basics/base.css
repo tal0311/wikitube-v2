@@ -72,6 +72,14 @@ p {
     margin: 0;
 }
 
+body.mobile body::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 0;
+    display: none;
+    border: none;
+}
+
 /* tool-tip */
 [data-title] {
     position: relative;

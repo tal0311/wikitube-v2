@@ -3,6 +3,10 @@ function initWiki() {
     renderVideoList(videos)
     renderWikiList(wikiData)
   }).catch(console.log)
+
+  setMobileStatus(isMobile())
+  // console.log('navigator.userAgentData.mobile:', navigator.userAgentData.mobile)
+
 }
 
 function renderVideoList(videos) {
@@ -79,4 +83,10 @@ function onUserScroll(ev) {
     elBody.classList.remove('scrolled')
   }
 
+}
+
+function setMobileStatus(isMobile) {
+  const elBody = document.querySelector('body')
+  console.log('isMobile:', isMobile)
+  isMobile ? elBody.classList.add('mobile') : elBody.classList.add('mobile')
 }
