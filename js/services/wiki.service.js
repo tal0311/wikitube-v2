@@ -3,11 +3,8 @@ const YT_API_KEY = 'AIzaSyCQ3VQLxhDknZgctC7gsaB2tpWsMuYSN8A'
 var gSearchTerm = 'vue'
 var gCache = loadFromStorage('cache') || {}
 
-
-
 function getAllData() {
   if (gCache[gSearchTerm]) {
-    console.log('from cache')
     return Promise.resolve(gCache[gSearchTerm])
   }
 

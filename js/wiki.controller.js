@@ -1,9 +1,13 @@
+'use strict'
+
 function initWiki() {
   getAllData().then(({ videos, wikiData }) => {
     renderVideoList(videos)
     renderWikiList(wikiData)
   }).catch(console.log)
   setMobileStatus(isMobile())
+  setConsoleData(true, true)
+  // console.log();
 }
 
 function renderVideoList(videos) {
@@ -64,13 +68,6 @@ function onSelectVideo(videoId) {
   elInfoContainer.querySelector('.video-desc').innerText = video.desc
 }
 
-function getViews() {
-  return Math.floor(Math.random() * 5000)
-}
-
-function getFormattedDate(ts) {
-  return new Date(ts).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
-}
 
 function onUserScroll(ev) {
   const elBody = document.querySelector('body')
