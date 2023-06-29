@@ -25,5 +25,6 @@ body.scrolled iframe {
 }
 
 .main-video .video-desc {
+    /* font-weight: 600; */
     font-family: Roboto500;
 }
